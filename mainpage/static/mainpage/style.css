@@ -1,0 +1,308 @@
+@charset "UTF-8";
+
+/* 
+$content-width will be the max width of the content within the navigation bar. 
+$breakpoint determines at which width the media query breakpoint will take effect.
+*/
+
+body {
+    margin: 0;
+    background: teal;
+    
+    background-position: center center;
+    background-size: cover;
+    background-image: url("images/backgroundimg.jpg");
+    background-repeat: no-repeat;
+}
+
+nav {
+    float: right;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav ul li {
+    float: left;
+    position: relative;
+}
+nav ul li a {
+    display: block;
+    padding: 0 20px;
+    line-height: 70px;
+    background: #ffffff;
+    color: #463f3f;
+    text-decoration: none;
+/*
+  The full path of this code is nav ul li a:not(:only-child):after. 
+  This means that the code will apply to any a tag in our nav list that is NOT an only child, aka any dropdown. 
+  The :after means it comes after the output of the tag. I’ve decided that to specify any nav item as a dropdown, 
+  it will be followed by a unicode arrow – ▾ (#9662).
+*/
+}
+
+nav ul li a:hover {
+    background: #f2f2f2;
+    color: #fb5958;
+}
+nav ul li a:not(:only-child):after {
+    padding-left: 4px;
+    content: ' ▾';
+}
+nav ul li ul li {
+    min-width: 190px;
+}
+nav ul li ul li a {
+    padding: 15px;
+    line-height: 20px;
+}
+
+.nav-dropdown {
+    position: absolute;
+    z-index: 1;
+    /* Guarantees that the dropdown will display on top of any content. */
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+}
+
+
+@media only screen and (max-width: 580px) {
+    .nav-mobile {
+        display: block;
+    }
+
+    nav {
+        width: 100%;
+        padding: 70px 0 15px;
+    }
+    nav ul {
+        display: none;
+    }
+    nav ul li {
+        float: none;
+    }
+    nav ul li a {
+        padding: 15px;
+        line-height: 20px;
+    }
+    nav ul li ul li a {
+        padding-left: 30px;
+    }
+}
+#nav-toggle {
+    position: absolute;
+    left: 18px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0;
+}
+#nav-toggle span,
+#nav-toggle span:after,
+#nav-toggle span:before {
+    cursor: pointer;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background: #463f3f;
+    position: absolute;
+    display: block;
+    content: '';
+    transition: all 300ms ease-in-out;
+}
+#nav-toggle span:before {
+    top: -10px;
+}
+#nav-toggle span:after {
+    bottom: -10px;
+}
+#nav-toggle.active span {
+    background-color: transparent;
+}
+#nav-toggle.active span:after,
+#nav-toggle.active span:before {
+    top: 0;
+}
+#nav-toggle.active span:before {
+    transform: rotate(45deg);
+}
+#nav-toggle.active span:after {
+    transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 800px) {
+    .nav-list {
+        display: block !important;
+    }
+}
+
+/* 
+.navigation – the outer wrapper for the navbar. 
+Specifies the height and color, and will stretch the full width of the viewport.
+*/
+.navigation {
+    height: 70px;
+    background: #ffffff;
+}
+
+/*
+.nav-container – the inner wrapper for the navbar. Defines how far the actual content should stretch.
+*/
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.brand {
+    position: absolute;
+    padding-left: 20px;
+    float: left;
+    line-height: 70px;
+    text-transform: uppercase;
+    font-size: 1.4em;
+}
+.brand a,
+.brand a:visited {
+    color: #463f3f;
+    text-decoration: none;
+}
+
+
+
+
+/* button ! */
+
+/*
+body {
+    background: #2ecc71;
+}
+*/
+
+.container {
+
+    padding: 2em;
+    font-size: 90%;
+    object-fit: contain;
+}
+
+
+/* GENERAL BUTTON STYLING */
+button,
+button::after {
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+button {
+
+    width: 20em;
+
+    background: none;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    color: #fff;
+    display: block;
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 2em 6em;
+    position: relative;
+    text-transform: uppercase;
+}
+
+button::after,
+button::before {
+    background: #fff;
+    content: '';
+    position: absolute;
+    z-index: -1;
+}
+
+button:hover {
+    color: #2ecc71;
+}
+
+/* BUTTON 1 */
+.btn-1::after {
+    height: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-1:hover:after {
+    height: 100%;
+}
+
+/* BUTTON 2 */
+.btn-2::after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+}
+
+.btn-2:hover:after {
+    width: 100%;
+}
+
+/* BUTTON 3 */
+.btn-3::after {
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: 0;
+}
+
+.btn-3:hover:after {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+/* BUTTON 4 */
+.btn-4::before {
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-4::after {
+    background: #2ecc71;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
+.btn-4:hover:after {
+    height: 0;
+    left: 50%;
+    top: 50%;
+    width: 0;
+}
+
+/* BUTTON 5 */
+.btn-5 {
+    overflow: hidden;
+}
+
+.btn-5::after {
+    background-color: #f00;
+    height: 100%;
+    left: -35%;
+    top: 0;
+    transform: skew(50deg);
+    transition-duration: 0.6s;
+    transform-origin: top left;
+    width: 0;
+}
+
+.btn-5:hover:after {
+    height: 100%;
+    width: 135%;
+}

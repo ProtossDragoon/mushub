@@ -1,0 +1,54 @@
+{% load static %}
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'mainpage/style.css' %}">
+    <script src="{% static 'script.js' %}"></script>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+
+
+<body>
+
+    <section class="navigation">
+    <div class="nav-container">
+        <div class="brand">
+        <a href="#!">MusHub</a>
+        </div>
+        <nav>
+        <ul class="nav-list">
+            <!-- Setting the links to #! will ensure that no action takes place on click. -->
+            <li><a href="{% url 'loginpage:loginpage' %}">Log in</a></li>
+            <li><a href="#!">My page</a></li>
+            <li><a href="#!">Search Items</a>
+            <ul class="nav-dropdown">
+                <li><a href="#!">Web Design</a></li>
+                <li><a href="#!">Web Development</a></li>
+                <li><a href="#!">Graphic Design</a></li>
+            </ul>
+            </li>
+            <li><a href="#!">About us</a></li>
+        </ul>
+        </nav>
+    </div>
+    </section>
+
+
+    <div class="container">
+        <button class="btn-1">Search Music</button>
+        <button class="btn-2">Serach Team</button>
+        <button class="btn-3">Log In</button>
+        <button class="btn-4">Getting Start</button>
+        <button class="btn-5">Language Setting</button>        
+    </div>
+
+</body>
+
+</html>
